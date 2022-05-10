@@ -1,0 +1,30 @@
+---
+- name: Configure web VMs with filebeat
+  hosts: dvwa
+  become: true
+  tasks:
+    - name: download filebeat
+      apt:
+        deb: https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.6.1-amd64.deb
+
+    - name: Install filebeat
+      ansible.builtin.dpkg_selections:
+        name: filebeat-7.6.1-amd64.deb
+        selection: install
+
+    - name: copy confs
+      copy:
+        src: /etc/ansible/Files/filebeat.yml
+        dest: /etc/filebeat/filebeat.yml
+
+    - name: enable and configure system
+      command: filebeat modules enable system
+
+    - name: setup filebeat
+      command: filebeat setup
+
+    - name: enable filebeat
+      service:
+        name: filebeat
+        enabled: yes
+        state: started
