@@ -70,7 +70,7 @@ The playbook implements the following tasks:
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
-Images\docker ps.png
+<img src="Images\docker ps.png">
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
@@ -95,7 +95,7 @@ SSH into the control node and follow the steps below:
 - To run ansible on a specific machine add it to the ansible hosts file, located in /etc/ansible/hosts. I created an elk and dvwa group to install the relevant packages to the correct machines.
 
 - _Which URL do you navigate to in order to check that the ELK server is running?
-`http://\<vmIPaddress>:5601/app/kibana`
+`http://<vmIPaddress>:5601/app/kibana`
 ### Commands to install stack:
 
 ````
